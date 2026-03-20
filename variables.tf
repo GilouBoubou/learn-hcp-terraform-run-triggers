@@ -1,7 +1,7 @@
 variable "instance_name" {
   description = "Value of the EC2 instance's Name tag."
   type        = string
-  default     = "learn-hcp-terraform-run-triggers"
+  default     = "learn-hcp-terraform-upstream"
 }
 
 variable "instance_type" {

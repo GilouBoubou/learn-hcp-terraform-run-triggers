@@ -7,10 +7,10 @@ data "aws_ami" "ubuntu" {
 
   filter {
     name   = "name"
-    values = ["ubuntu/images/hvm-ssd-gp3/ubuntu-noble-*"]
+    values = ["ubuntu/images/hvm-ssd-gp3/ubuntu-noble-24.04-amd64-server-*"]
   }
 
-  owners = ["093583251863"] # Canonical
+  owners = ["099720109477"] # Canonical
 }
 
 data "tfe_outputs" "source_workspace" {

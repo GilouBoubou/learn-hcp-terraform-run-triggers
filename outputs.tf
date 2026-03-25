@@ -13,5 +13,5 @@ output "instance_subnet" {
 
 output "keeper" {
   description = "Affiche le keeper de : instance_security_group_ids"
-  value = random_id.vpc_id.instance_security_group_ids
+  value = random_id.vpc_id
 }

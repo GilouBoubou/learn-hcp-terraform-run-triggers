@@ -29,3 +29,12 @@ resource "aws_instance" "app_server" {
     Name = var.instance_name
   }
 }
+
+resource "random_id" "vpc_id" {
+  keepers = {
+    # Generate a new ID any time the value of 'instance_security_group_ids' in workspace 'my-org/my-workspace' changes.
+    instance_security_group_ids = data.tfe_outputs.source_workspace.nonsensitive_values.instance_security_group_ids
+  }
+
+  byte_length = 8
+}

@@ -10,3 +10,8 @@ output "instance_security_group_ids" {
 output "instance_subnet" {
   value = aws_instance.app_server.subnet_id
 }
+
+output "instance_security_group_ids" {
+  description = "Affiche le keeper de : instance_security_group_ids"
+  value = random_id.vpc_id.instance_security_group_ids
+}

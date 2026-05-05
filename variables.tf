@@ -19,4 +19,5 @@ variable "workspace_name" {
 variable "organization_name" {
   description = "Name of the HCP Terraform organization with the source workspace"
   type        = string
+  default     = "TEST_GB"
 }

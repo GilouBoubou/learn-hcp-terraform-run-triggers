@@ -21,3 +21,13 @@ variable "organization_name" {
   type        = string
   default     = "TEST_GB"
 }
+
+variable "instance_subnet" {
+  description = "Subnet communs"
+  type        = string
+}
+
+variable "instance_security_group_ids" {
+  description = "Liste des groupes de sécurité communs definis dans les var de HCP Terraform workspace"
+  type        = list(string)
+}

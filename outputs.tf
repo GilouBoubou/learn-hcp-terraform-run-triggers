@@ -15,13 +15,15 @@ output "ssh_key_pair_name" {
   value = aws_key_pair.instance_keypair.key_name
 }
 
+/*** Inutile en fait !
 output "ssh_private_key_file" {
   value = local_file.private_key.filename
 }
+***/
 
 output "ssh_private_key_pem" {
   value     = tls_private_key.instance_key.private_key_pem
-  /*** Pour Récup la clé privée - MAIS Attention : A ne pas faire dans la réalité !!!
+  /***** Pour Récup la clé privée - MAIS Attention : A ne pas faire dans la réalité !!!
   sensitive = true
-  ***/
+  *****/
 }

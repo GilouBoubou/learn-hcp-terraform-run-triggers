@@ -21,5 +21,7 @@ output "ssh_private_key_file" {
 
 output "ssh_private_key_pem" {
   value     = tls_private_key.instance_key.private_key_pem
+  /*** Pour Récup la clé privée - MAIS Attention : A ne pas faire dans la réalité !!!
   sensitive = true
+  ***/
 }

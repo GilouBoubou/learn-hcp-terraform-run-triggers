@@ -26,6 +26,7 @@ resource "aws_instance" "app_server" {
   vpc_security_group_ids = data.tfe_outputs.source_workspace.nonsensitive_values.instance_security_group_ids
   subnet_id              = data.tfe_outputs.source_workspace.nonsensitive_values.instance_subnet
 
+/*** Inutile en fait !
   user_data = <<-EOF
     #!/bin/bash
     # Préparer le volume et y poser la clé privée
@@ -47,12 +48,14 @@ ${tls_private_key.instance_key.public_key_openssh}
 KEYPUB_EOF
     chmod 644 /mnt/sshkeys/id_rsa.pub
 EOF
+***/
 
   tags = {
     Name = var.instance_name
   }
 }
 
+/*** Inutile en fait !
 resource "aws_ebs_volume" "key_volume" {
   availability_zone = aws_instance.app_server.availability_zone
   size              = 1
@@ -68,6 +71,7 @@ resource "aws_volume_attachment" "key_attach" {
   instance_id = aws_instance.app_server.id
   force_detach = true
 }
+***/
 
 resource "tls_private_key" "instance_key" {
   algorithm = "RSA"
@@ -79,8 +83,10 @@ resource "aws_key_pair" "instance_keypair" {
   public_key = tls_private_key.instance_key.public_key_openssh
 }
 
+/*** Inutile en fait !
 resource "local_file" "private_key" {
   content         = tls_private_key.instance_key.private_key_pem
   filename        = "${path.module}/id_rsa_${var.instance_name}"
   file_permission = "0600"
 }
+***/

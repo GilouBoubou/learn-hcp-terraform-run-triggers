@@ -35,5 +35,4 @@ variable "instance_security_group_ids" {
 variable "key_name" {
   description = "Keys name in AWS communs"
   type        = string
-  default     = "GB_cles_RSA"
 }

@@ -1,7 +1,7 @@
 variable "instance_name" {
   description = "Value of the EC2 instance's Name tag."
   type        = string
-  default     = "learn-hcp-terraform-upstream_2"
+  default     = "learn-hcp-terraform-upstream_3"
 }
 
 variable "instance_type" {
@@ -30,4 +30,10 @@ variable "instance_subnet" {
 variable "instance_security_group_ids" {
   description = "Liste des groupes de sécurité communs definis dans les var de HCP Terraform workspace"
   type        = list(string)
+}
+
+variable "key_name" {
+  description = "Keys name in AWS communs"
+  type        = string
+  default     = "GB_cles_RSA"
 }

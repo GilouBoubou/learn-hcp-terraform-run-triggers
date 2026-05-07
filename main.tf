@@ -18,15 +18,28 @@ data "tfe_outputs" "source_workspace" {
   organization = var.organization_name
 }
 
-resource "aws_instance" "app_server" {
+resource "aws_instance" "app_server_1" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
   key_name      = var.key_name
 
-  vpc_security_group_ids = data.tfe_outputs.source_workspace.nonsensitive_values.instance_security_group_ids
+  vpc_security_group_ids = var.instance_security_group_ids
   subnet_id              = data.tfe_outputs.source_workspace.nonsensitive_values.instance_subnet
 
   tags = {
-    Name = var.instance_name
+    Name = "${var.instance_name}_1"
+  }
+}
+
+resource "aws_instance" "app_server_2" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = var.instance_type
+  key_name      = var.key_name
+
+  vpc_security_group_ids = var.instance_security_group_ids
+  subnet_id              = data.tfe_outputs.source_workspace.nonsensitive_values.instance_subnet
+
+  tags = {
+    Name = "${var.instance_name}_2"
   }
 }

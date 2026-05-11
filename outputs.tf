@@ -11,6 +11,8 @@ output "instance_subnet_1" {
   value = aws_instance.app_server_1.subnet_id
 }
 
+/***
 output "ssh_key_pair_name" {
   value = var.key_name
 }
+***/

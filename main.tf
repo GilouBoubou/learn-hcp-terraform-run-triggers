@@ -13,12 +13,10 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
-/***
 data "tfe_outputs" "source_workspace" {
   workspace    = var.workspace_name
   organization = var.organization_name
 }
-***/
 
 resource "aws_instance" "app_server_1" {
   ami           = data.aws_ami.ubuntu.id
@@ -26,8 +24,8 @@ resource "aws_instance" "app_server_1" {
   key_name      = var.key_name
 
   vpc_security_group_ids = var.instance_security_group_ids
-  // subnet_id              = data.tfe_outputs.source_workspace.nonsensitive_values.instance_subnet
-  subnet_id              = var.instance_subnet
+  subnet_id              = data.tfe_outputs.source_workspace.nonsensitive_values.instance_subnet
+  // subnet_id              = var.instance_subnet
 
   tags = {
     Name = "${var.instance_name}_1"
@@ -40,8 +38,8 @@ resource "aws_instance" "app_server_2" {
   key_name      = var.key_name
 
   vpc_security_group_ids = var.instance_security_group_ids
-  // subnet_id              = data.tfe_outputs.source_workspace.nonsensitive_values.instance_subnet
-  subnet_id              = var.instance_subnet
+  subnet_id              = data.tfe_outputs.source_workspace.nonsensitive_values.instance_subnet
+  // subnet_id              = var.instance_subnet
   
   tags = {
     Name = "${var.instance_name}_2"

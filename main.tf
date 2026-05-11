@@ -21,10 +21,13 @@ data "tfe_outputs" "source_workspace" {
 resource "aws_instance" "app_server_1" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
-  // key_name      = var.key_name
+  
   key_name      = data.tfe_outputs.source_workspace.nonsensitive_values.key_name
+  // key_name      = var.key_name
 
-  vpc_security_group_ids = var.instance_security_group_ids
+  vpc_security_group_ids = data.tfe_outputs.source_workspace.nonsensitive_values.instance_security_group_ids
+  // vpc_security_group_ids = var.instance_security_group_ids
+
   subnet_id              = data.tfe_outputs.source_workspace.nonsensitive_values.instance_subnet
   // subnet_id              = var.instance_subnet
 
@@ -36,10 +39,13 @@ resource "aws_instance" "app_server_1" {
 resource "aws_instance" "app_server_2" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
-  // key_name      = var.key_name
-  key_name      = data.tfe_outputs.source_workspace.nonsensitive_values.key_name
 
-  vpc_security_group_ids = var.instance_security_group_ids
+  key_name      = data.tfe_outputs.source_workspace.nonsensitive_values.key_name
+  // key_name      = var.key_name
+
+  vpc_security_group_ids = data.tfe_outputs.source_workspace.nonsensitive_values.instance_security_group_ids
+  // vpc_security_group_ids = var.instance_security_group_ids
+  
   subnet_id              = data.tfe_outputs.source_workspace.nonsensitive_values.instance_subnet
   // subnet_id              = var.instance_subnet
   

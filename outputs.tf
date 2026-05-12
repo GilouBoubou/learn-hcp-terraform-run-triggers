@@ -12,5 +12,5 @@ output "instance_subnet_1" {
 }
 
 output "ssh_key_pair_name" {
-  value = aws_instance.app_server_1..key_name
+  value = aws_instance.app_server_1.key_name
 }
